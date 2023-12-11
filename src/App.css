@@ -1,0 +1,488 @@
+/* Log In Form */
+
+#LogIn-main {
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh; 
+  margin: 0;
+  padding: 0;
+  border: 2px solid rgb(229, 247, 244);  
+  background-color:rgb(229, 247, 244);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.LS-Form{
+  border: 2px solid rgb(109, 220, 128);
+  width: 30%;
+  height: 35%;
+  background-color: rgb(104, 208, 121);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+#logo{
+  background-color: rgb(18, 66, 26);
+  color: rgb(104, 208, 121);
+  padding: 10px;
+  border-radius: 100%;
+  position: absolute;
+  top: -55px;
+}
+
+#LogIn-main label{
+  color:rgb(18, 66, 26);
+  margin-top: 15px;
+}
+
+#LogIn-main input{
+  width: 80%;
+  height: 25px;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+}
+
+#LogIn-main button{
+  margin-top: 15px;
+  padding: 5px 15px;
+  background-color:rgb(18, 66, 26);
+  color: rgb(104, 208, 121);
+  border: none;
+  border-radius: 5px;
+}
+
+/* Dashboard */
+
+#Dashboard-Main{
+  box-sizing: border-box;
+  border: 1px solid rgb(228, 246, 235);
+  background-color: rgb(228, 246, 235);
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  flex-wrap: wrap;
+}
+
+.Dash{
+  width: 100vw;
+  padding: 1% 10%;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  flex-wrap: wrap;
+}
+
+p{
+  font-size: 20px;
+}
+
+#Budget{
+  width: 40%;
+  margin: 0% 2% 2% 2%;
+  padding: 5px 20px;
+  background-color: #f7fbff;
+  border: 1px solid #0C6515;
+  border-radius: 20px;
+}
+
+#Budget p, h3{
+  display: inline-block;
+}
+
+#Budget .Left{
+  width: 70%;
+  text-align: left;
+}
+
+#Budget .Right{
+  width: 30%;
+  text-align: right;
+}
+
+#Expense{
+  width: 40%;
+  margin: 0% 2% 2% 2%;
+  padding: 5px 20px;
+  background-color: #f7fbff;
+  border: 1px solid #0C6515;
+  border-radius: 20px;
+}
+
+#Expense p, h3{
+  display: inline-block;
+}
+
+#Expense .Left{
+  width: 70%;
+  text-align: left;
+}
+
+#Expense .Right{
+  width: 30%;
+  text-align: right;
+}
+
+#Today{
+  width: 70vw; 
+  margin: 0% 2% 2% 2%;
+  padding: 5px 20px 20px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.normalToday{
+  background-color: #9FE095;
+  border: 2px solid #9FE095;
+}
+
+.redToday{
+  background-color: #FC964C;
+  border: 2px solid #FC964C;
+}
+
+#Today h3{
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.amounts{
+  width: 50%;
+}
+
+.first-div{
+  margin-bottom: 15px;
+}
+
+.SA{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.SA div{
+  text-align: center;
+}
+
+.SA div p{
+  margin: 0;
+  font-weight: 500;
+}
+
+.normalToday .Amount{
+  font-size: xxx-large;
+  color: #04AD15;
+}
+
+.redToday .Amount{
+  font-size: xxx-large;
+  color: #CF0000;
+}
+
+.inputting{
+  width: 40%;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.normalToday .inputting select{
+  width: 100%;
+  height: 25px;
+  margin: 10px;
+  background-color: #0C6515;
+  color: #FFFFFF ;
+  border: none;
+}
+
+.redToday .inputting select{
+  width: 100%;
+  height: 25px;
+  margin: 10px;
+  background-color: #CF0000;
+  color: #FFFFFF ;
+  border: none;
+}
+
+.normalToday .inputting input[type="number"]{
+  width: 64%;
+  height: 40px;
+  margin: 0 5px;
+  font-size: xxx-large;
+  background-color: #9FE095;
+  border: none;
+  border-bottom: 1px solid #0C6515;
+}
+
+.redToday .inputting input[type="number"]{
+  width: 64%;
+  height: 40px;
+  margin: 0 5px;
+  font-size: xxx-large;
+  background-color: #FC964C;
+  border: none;
+  border-bottom: 1px solid #CF0000;
+}
+
+.buttons-div{
+  margin: 5px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.normalToday .buttons-div button{
+  width: 70px;
+  height: 25px;
+  margin: 5px;
+  background-color: #04AD15;
+  color: #edfff6;
+  border: none;
+  border-radius: 5px;;
+}
+
+.redToday .buttons-div button{
+  width: 70px;
+  height: 25px;
+  margin: 5px;
+  background-color: #CF0000;
+  color: #edfff6;
+  border: none;
+  border-radius: 5px;;
+}
+
+#Yesterday{
+  width: 15vw;
+  margin: 0% 2% 2% 2%;
+  padding: 15px 20px;
+  background-color: #FC964C;
+  border-radius: 15px;
+  border: 2px solid #FC964C;
+}
+
+#Yesterday h3{
+  display: inline-block;
+  margin: 0 5px;
+}
+
+#Yesterday div{
+  text-align: center;
+}
+
+#Yesterday div:nth-of-type(1){
+  margin-bottom:  15px;
+}
+
+#Yesterday p{
+  margin: 0px;
+}
+
+#Yesterday .Amount{
+  font-size: xxx-large;
+  margin: 0;
+  color: #CF0000;
+}
+
+#Tomorrow{
+  width: 15vw;
+  margin: 0% 2% 2% 2%;
+  padding: 15px 20px;
+  background-color: #9FE095;
+  border: 2px solid #9FE095;
+  border-radius: 15px;
+}
+
+#Tomorrow h3{
+  display: inline-block;
+  margin: 0 5px;
+}
+
+#Tomorrow div{
+  text-align: center;
+}
+
+#Tomorrow div:nth-of-type(1){
+  margin-bottom:  15px;
+}
+
+#Tomorrow p{
+  margin: 0px;
+
+}
+
+#Tomorrow .Amount{
+  font-size: xxx-large;
+  margin: 0;
+  color: #04AD15;
+}
+
+#To-Notes{
+  width: 39%;
+  height: 160px;
+  margin: 0% 2% 2% 2%;
+  text-align: center;
+  background-color: #f7fbff;
+  border: 1px solid #0C6515;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#To-Notes div{
+  text-align: center;
+}
+
+#To-Notes h3{
+  display: block;
+}
+
+#Transaction-History{
+  width: 100vw;
+  padding: 2% 10%;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  flex-wrap: wrap;
+}
+
+#Transaction-History table{
+  width: 70vw; 
+  margin: 0% 2% 2% 2%;
+  padding: 5px 20px 20px;
+  background-color: #9FE095;
+  border-radius: 15px;
+  border: 2px solid #9FE095;
+}
+
+#Transaction-History p{
+  display: inline-block;
+}
+
+#Transaction-History .intable{
+  display: flex;
+  justify-content: center;
+}
+
+#Transaction-History .Left{
+  width: 50%;
+}
+
+#Transaction-History .Right{
+  width: 70%;
+  text-align: right;
+}
+
+
+/*Inputs and Categories*/
+
+#IncomePage{
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh; 
+  border: 1px solid rgb(228, 246, 235);
+  background-color: rgb(228, 246, 235);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+}
+
+.Input{
+  background-color: #9FE095;
+  border: 2px #9FE095 solid;
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  margin: 1%;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.labels label{
+  display: block;
+  font-size: 20px;
+  margin: 2px 5px;
+}
+
+
+.inps input{
+  border: none;
+  margin: 3px 5px;
+  height: 22px;
+  border-radius: 5px;
+}
+
+.inps button{
+  border: none;
+  height: 22px;
+  width: 50px;
+  border-radius: 5px;
+  color: rgb(228, 246, 235);
+  background-color: #04AD15;
+}
+
+.Categories{
+  background-color: #9FE095;
+  border: 2px #9FE095 solid;
+  width: 60%;
+  padding: 20px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.Categories div{
+  width: 80%;
+  display: flex;
+  justify-content: center;
+}
+
+.Categories h2{
+  margin: 0;
+}
+
+.Categories p{
+  display: inline-block;
+}
+
+.Categories .Left{
+  width: 40%;
+  text-align: left;
+}
+
+.Categories .Right{
+  width: 30%;
+  text-align: right;
+}
+
+.CategoryAdd{
+  border: none;
+  width: 50%;
+  height: 22px;
+  margin: 2px 5px;
+  border-radius: 5px;
+}
+
+.Categories button{
+  border: none;
+  height: 24px;
+  width: 50px;
+  margin: 2px 0px;
+  border-radius: 5px;
+  color: rgb(228, 246, 235);
+  background-color: #04AD15;
+}
