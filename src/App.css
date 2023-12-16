@@ -59,6 +59,57 @@
   border-radius: 5px;
 }
 
+/*SignUp*/
+
+#SignIn-main {
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh; 
+  margin: 0;
+  padding: 0;
+  border: 2px solid rgb(229, 247, 244);  
+  background-color:rgb(229, 247, 244);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.SI-Form{
+  border: 2px solid rgb(109, 220, 128);
+  width: 30%;
+  height: 40%;
+  background-color: rgb(104, 208, 121);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+#SignIn-main label{
+  color:rgb(18, 66, 26);
+  margin-top: 15px;
+}
+
+#SignIn-main input{
+  width: 80%;
+  height: 25px;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+}
+
+#SignIn-main button{
+  margin-top: 15px;
+  padding: 5px 15px;
+  background-color:rgb(18, 66, 26);
+  color: rgb(104, 208, 121);
+  border: none;
+  border-radius: 5px;
+}
 /* Dashboard */
 
 #Dashboard-Main{
@@ -177,6 +228,7 @@ p{
 .SA div p{
   margin: 0;
   font-weight: 500;
+  display: block;
 }
 
 .normalToday .Amount{
@@ -285,6 +337,7 @@ p{
 
 #Yesterday p{
   margin: 0px;
+  display: block;
 }
 
 #Yesterday .Amount{
@@ -317,7 +370,7 @@ p{
 
 #Tomorrow p{
   margin: 0px;
-
+  display: block;
 }
 
 #Tomorrow .Amount{
@@ -385,6 +438,15 @@ p{
 
 
 /*Inputs and Categories*/
+.centerMain{
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center; 
+}
 
 #IncomePage{
   box-sizing: border-box;
@@ -403,6 +465,7 @@ p{
   border: 2px #9FE095 solid;
   width: 60%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items:center;
   margin: 1%;
@@ -410,24 +473,40 @@ p{
   border-radius: 15px;
 }
 
-.labels label{
-  display: block;
-  font-size: 20px;
-  margin: 2px 5px;
+.labels h1{
+  padding: 0px;
+  margin: 0px;
+} 
+
+.inps{
+
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 15px 0px;
+  width: 95%;
 }
 
+.inps div{
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 30%;
+}
 
 .inps input{
   border: none;
-  margin: 3px 5px;
-  height: 22px;
+  margin: 5px 0px;
+  height: 25px;
+  width: 95%;
   border-radius: 5px;
 }
 
-.inps button{
+.Input button{
   border: none;
-  height: 22px;
-  width: 50px;
+  height: 30px;
+  width: 100px;
   border-radius: 5px;
   color: rgb(228, 246, 235);
   background-color: #04AD15;
@@ -482,6 +561,51 @@ p{
   height: 24px;
   width: 50px;
   margin: 2px 0px;
+  border-radius: 5px;
+  color: rgb(228, 246, 235);
+  background-color: #04AD15;
+}
+
+#directions{
+  background-color: #a1f794;
+  border: 2px #a1f794 solid;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+  margin: 1%;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.defns{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+  text-align: center;
+  margin-bottom: 10px;;
+}
+
+.defns h3,p{
+  display: inline;
+}
+
+.exp{
+  text-align: center;
+}
+
+.exp p{
+  display: inline-block;
+  margin: 5px 0px;
+}
+
+#directions button{
+  border: none;
+  height: 40px;
+  width: 100px;
+  margin: 10px 0px 0px 0px;
   border-radius: 5px;
   color: rgb(228, 246, 235);
   background-color: #04AD15;

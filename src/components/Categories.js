@@ -1,5 +1,6 @@
 import '../App.css';
 import React, {useState} from 'react';
+import {Link} from 'react-router-dom';
 
 function Categories() {
 
@@ -50,6 +51,7 @@ const deleteCategory = (index) => {
                 onChange={(e) => setNewCategory(e.target.value)} ></input>
           <button className='Add' onClick={addCategory}>Add</button>
         </div>
+        <Link to="/home"><button>Done!</button></Link>
       </div>
     
   );

@@ -1,7 +1,7 @@
 import '../App.css';
 import LogIn from '../components/Login';
 
-function LogSign(){
+function Log(){
     return(
         <div>
             <LogIn/>
@@ -9,4 +9,4 @@ function LogSign(){
     );
 }
 
-export default LogSign;
+export default Log;

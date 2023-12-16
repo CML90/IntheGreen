@@ -1,25 +1,125 @@
 import '../App.css';
 import React, { useState, useEffect } from 'react';
+import Axios from 'axios';
+import {Link} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+
 
 function Dashboard() {
+  const history = useHistory();
+  const [currentDate, setCurrentDate] = useState(new Date());
 
-    //temporary, make sure to get the current month and year and days
-    const month = 'January 2023'
-    const today = 1
-    const yesterday = 31
-    const tomorrow = 2
-    //teporary, make sure to set this in settings
+  //check for cookie
+    const [user, setUser] = useState('');
+    Axios.defaults.withCredentials = true;
+    useEffect(() => {
+      Axios.get("http://localhost:3001/api/authorized").then((response) => {
+        //console.log(response);
+       if(response.data.message){
+        alert('You are not authenticated');
+       }else{
+        setUser(response.data.userInfo);
+       }
+      });
+    }, []);
+
+
+    //TIMEDATE
+  useEffect(() => {
+    // Update the current date every minute
+    const intervalId = setInterval(() => {
+      setCurrentDate(new Date());
+    }, 60000); // 60000 milliseconds = 1 minute
+
+    // Clear the interval on component unmount
+    return () => clearInterval(intervalId);
+  }, []);
+  
+    //dates needed
+    const monthYear = currentDate.toLocaleString('en-US', { month: 'long', year: 'numeric' });
+    const today = currentDate.getDate();
+    const yesterday = currentDate.getDate() - 1;
+    const tomorrow = currentDate.getDate() + 1;
+
+    //dayBudget calculation variables
+    const currentMonth = currentDate.getMonth() + 1; // Month is zero-based
+    const currentYear = currentDate.getFullYear();
+    const totalDaysInMonth = new Date(currentYear, currentMonth, 0).getDate();
+    //for now, just PHP
     const Currency = 'PHP '
 
-    //Budget Values taken from the Database (these values are temporary)
+    //MONTHLY
+    //if it is the first in the month, go to a different page to input new month's details
+    //only do this if there is no row in db for new month's set
+    //Use budgetData for it
+
+    //Budget Values taken from the Database
     //calculate consequent budget for the next days, monthly budget - today's expense / number of days left in the month 
     const [budgetData, setBudgetData] = useState({
-      total: 19500,
-      save: 2000,
-      monthBudget: 15500,
-      dayBudget: 500,
+      total: 0,
+      save: 0,
+      monthBudget: 0,
+      dayBudget: 0, //initialization only
     });
 
+    //get values from the database and initialize budgetData
+    //if now row, insert monthly
+    useEffect(()=>{
+      if(user){
+          Axios.post("http://localhost:3001/api/getmonthlyset", {
+            user: user,
+            month: currentMonth,
+            year: currentYear
+          }).then((response) => {
+          //console.log(response);
+            if(response.data.message){
+              //console.log("None");
+              history.push('/monthly');
+            }else{
+              const updatedBudgetData = {
+                total: response.data[0].Income,
+                save: response.data[0].Save,
+                monthBudget: response.data[0].Budget,
+                dayBudget: response.data[0].DayBudget,
+              };
+              setBudgetData(updatedBudgetData); 
+            }
+        });
+      }
+    }, [user]);
+
+    //DAILY
+    //If non-existant, Insert row to track spent, avail, and newdaybudget
+    //If exists, extract data to show in component
+    //update when needed
+
+    useEffect(() => {
+      if(user){
+        Axios.post("http://localhost:3001/api/getdailyset", {
+            user: user,
+            date: today
+        }).then((response) => {
+
+        });
+      }
+    }, [user]);
+
+    //for today's spent and available values
+    const [spent, setSpent] = useState(0);
+    const [available, setAvailable] = useState(budgetData.dayBudget - spent);
+    //change avail when monthly set details are selected
+    useEffect(() => {
+      setAvailable(budgetData.dayBudget - spent);
+    }, [budgetData]);
+   
+   //change the newbudget data for tomorrow according to the number of days left in the month (excluding today)
+   useEffect(() => {      
+    setAvailable(budgetData.dayBudget - spent); 
+    setNewBudgetData(((budgetData.monthBudget - spent)/(totalDaysInMonth-today)).toFixed(1)); //TEMPORARY 31
+  },[spent]);
+
+    //calculate the "ideal" budget for each day. This will only change every new month as a benchmark to actual values in reality
+    //this is the adjusted budget due to what has been spent (or not) beforehand
     const [changeDayBudg, setNewBudgetData] = useState();
 
     //Expense Portion
@@ -48,10 +148,7 @@ function Dashboard() {
         // You can also pass a locale string as an argument for a specific formatting
     };
 
-    //for today's spent and available values
-    const [spent, setSpent] = useState(0);
-    const [available, setavailable] = useState(budgetData.dayBudget - spent);
-
+ 
     //change color
     const divClassName = spent > budgetData.dayBudget ? 'redToday' : 'normalToday';
 
@@ -106,11 +203,6 @@ function Dashboard() {
         }));
     };
 
-    useEffect(() => {      
-      setavailable(budgetData.dayBudget - spent); 
-      setNewBudgetData(((budgetData.monthBudget - spent)/30).toFixed(1)); //TEMPORARY 31
-    },[spent]);
-
     //delete the last transaction, recalculate available value and succeeding day budgets
     const UndoOperation = () => {
         console.log("Category: ", categoryValue);
@@ -122,7 +214,7 @@ function Dashboard() {
     <div id="Dashboard-Main">
       <div className='Dash'>
       <div id="Budget">
-          <h3 className='Month'>{month}</h3>
+          <h3 className='Month'>{monthYear}</h3>
           <div>
             <p className='Left'>Total:</p>
             <p className='Total-Amount Right'>{Currency}{formatNumber(budgetData.total)}</p>
@@ -144,7 +236,7 @@ function Dashboard() {
         <div id="Expense">
         {/* divs are dynamically created according to the categories added in Set page 
             size or position needs to be updated if number of categories start to get larger*/}
-          <h3 className='Month'>{month}</h3>
+          <h3 className='Month'>{monthYear}</h3>
 
             {categories.map((category) => (
                 <div key={category}>
@@ -154,19 +246,6 @@ function Dashboard() {
                     </p>
                 </div>
             ))}
-
-          {/* <div>
-            <p className='Living Left'>Living:</p>
-            <p className='Living-Expense Right'>{Currency} 500</p>
-          </div>
-          <div>
-            <p className='Bills Left'>Bills:</p>
-            <p className='Bills-Expense Right'>{Currency} 0</p>
-          </div>
-          <div>
-            <p className='Other Left'>Others:</p>
-            <p className='Other-Expense Right'>{Currency} 250</p>
-          </div>*/}
           
           <div className="emphasize">
             <h3 className='Left'>Total Spent:</h3><h3 className='Budget Right'>{Currency} {formatNumber(calcTotExpense())}</h3>
@@ -202,10 +281,6 @@ function Dashboard() {
                 {categories.map((category) => (
                     <option key={category} value = {category}>{category}</option>
                 ))}
-              {/* 
-              <option value='living'>Living Costs</option>
-              <option value='bills'>Bills</option>
-              <option value='other'>Others</option> */}
             </select>
 
             <input type='number' onChange={handleInputChange}></input>
@@ -245,10 +320,13 @@ function Dashboard() {
         </div>
 
         <div id="To-Notes">
-          <div>
-            <h3 className='Month'>{month}</h3>
-            <a><h3>Notes and Calculations</h3></a>
-          </div>
+          <Link to="/calculate">
+            <div>
+              <h3 className='Month'>{monthYear}</h3>
+              <a><h3>Notes and Calculations</h3></a>
+            </div>
+          </Link>
+          
         </div>
 
       </div>

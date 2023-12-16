@@ -1,33 +1,36 @@
 import './App.css';
-import Dashboard from './components/Dashboard';
-import Trans from './components/Transactions';
 import Set from './layouts/Calcs';
 import Dash from './layouts/Home';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import LogSign from './layouts/Login';
+import Log from './layouts/Login';
+import BudgetComponent from './components/datapractice';
+import Sign from './layouts/Signin';
+import Monthly from './layouts/MonthlySet';
 
 
 function App() {
   return (
     <Router>
       <div className="App">
-        {/* <Dashboard/>
-        <Trans/>  */}
-        {/* <Set/> */}
-        {/* <Dash/> */}
         <Switch>
         <Route exact path="/">
-            <LogSign/>
+            <Log/>
           </Route>
           <Route path="/signup">
-            <LogSign/>
+            <Sign/>
           </Route>
           <Route path="/home">
             <Dash/>
           </Route>
           <Route path="/calculate">
             <Set/>
+          </Route>
+          <Route path="/date">
+            <BudgetComponent/>
+          </Route>
+          <Route path="/monthly">
+            <Monthly/>
           </Route>
         </Switch>
       </div>
