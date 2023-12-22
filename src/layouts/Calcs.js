@@ -8,7 +8,7 @@ function Set(){
     return(
         <div id="IncomePage">
             <Inputs/>
-            <Categories/>
+            {/* <Categories/> */}
             <Directions/>
         </div>
     );

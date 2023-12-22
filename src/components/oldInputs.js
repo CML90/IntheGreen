@@ -60,9 +60,28 @@ const UserInputs = () => {
           // if(err){
           //   alert('Error in insertion');
           // }
+
+          //INSERT FOR MONTHLYSPENT
+          console.log("setnewuserexpense is running");
+          Axios.post('http://localhost:3001/api/SetnewUserExpense', {
+            userId: user.userId 
+          }).then((Secondresponse) => {
+              console.log(Secondresponse);
+              history.push('/home');
+              window.location.reload();
+          });
+
+          //INSERT FOR DAILYSET (INITIAL)
+          Axios.post('http://localhost:3001/api/SetnewUserDay',{
+            userId : user.userId,
+            avail: (formData.income - formData.sum)/totalDaysInMonth,
+            budget: formData.income - formData.sum
+          }).then((Secondresponse) => {
+              console.log(Secondresponse);
+          });
         });
 
-        history.push('/home');
+        
       }else{
         alert('Income must be greater than bills + savings');
       }

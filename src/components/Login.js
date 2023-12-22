@@ -4,6 +4,9 @@ import React, {useState, useEffect} from "react";
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import userSchema from '../validations/login';
 import Axios from 'axios';
+import { ToastContainer } from 'react-toastify';
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function LogIn() {
 
@@ -19,10 +22,10 @@ function LogIn() {
         password: event.target[1].value
       };
 
-      //console.log(formData);
+      console.log(formData);
 
       const isValid = await userSchema.isValid(formData);
-      //console.log(isValid);
+      console.log(isValid);
 
       if(isValid){
         // Add form submission logic here
@@ -33,21 +36,22 @@ function LogIn() {
         }).then((response) => {
           if (response.data.message){
             setLoginStatus(response.data.message);
+            toast.error(response.data.message, { position: 'top-center' });
+            //console.log(loginStatus);
           }else{
             console.log(response);
+            toast.success('Successful Login', { position: 'top-center' });
             setLoginStatus(response.data[0].UserID);
             history.push('/home');
             
             console.log(response);
+            console.log(loginStatus);
           }
           //console.log(response.data);
         });
       }else{
-        alert('Invalid Input');
+        toast.warn('The input is invalid.', { position: 'top-center' });
       }
-      
-
-      
     };
 
     useEffect(() => {
@@ -62,16 +66,17 @@ function LogIn() {
 
 
   return (
+    
     <div id="LogIn-main">
+      <ToastContainer />
       <form className="LS-Form" onSubmit={handleSubmit}>
-        <h1 id="logo">BT</h1>
+        <h1 id="logo">GB</h1>
         <label>Username:</label><input type="text" name="username" required/>
         <label>Password:</label><input type="password" name="username" required/>
         
         <button type="submit">Log In</button>
       </form>
         <p>No account yet?</p><Link to="/signup">Sign Up</Link>
-        <h1>{loginStatus}</h1>
     </div>
   );
 }

@@ -87,6 +87,7 @@
   justify-content: center;
   align-items: center;
   position: relative;
+  padding-top: 20px;
 }
 
 #SignIn-main label{
@@ -120,6 +121,14 @@
   justify-content: center;
   align-items:center;
   flex-wrap: wrap;
+}
+
+.logoutbutt{
+  width: 72vw;
+  background-color: #9FE095;
+  border: 2px solid #9FE095;
+  border-radius: 5px;
+  margin-top: 5px;
 }
 
 .Dash{
@@ -193,8 +202,8 @@ p{
 }
 
 .normalToday{
-  background-color: #9FE095;
-  border: 2px solid #9FE095;
+  background-color: #419135;
+  border: 1px solid #9FE095;
 }
 
 .redToday{
@@ -209,6 +218,7 @@ p{
 
 .amounts{
   width: 50%;
+  min-width: 400px;
 }
 
 .first-div{
@@ -232,12 +242,12 @@ p{
 }
 
 .normalToday .Amount{
-  font-size: xxx-large;
-  color: #04AD15;
+  font-size: 3vw;
+  color: #9FE095;
 }
 
 .redToday .Amount{
-  font-size: xxx-large;
+  font-size: 3vw;
   color: #CF0000;
 }
 
@@ -297,7 +307,7 @@ p{
   width: 70px;
   height: 25px;
   margin: 5px;
-  background-color: #04AD15;
+  background-color: #0C6515;
   color: #edfff6;
   border: none;
   border-radius: 5px;;
@@ -314,7 +324,8 @@ p{
 }
 
 #Yesterday{
-  width: 15vw;
+  width: 31vw;
+  max-height: 20vh;
   margin: 0% 2% 2% 2%;
   padding: 15px 20px;
   background-color: #FC964C;
@@ -341,13 +352,15 @@ p{
 }
 
 #Yesterday .Amount{
-  font-size: xxx-large;
+  font-size: 3vw;
   margin: 0;
   color: #CF0000;
+  flex-shrink: 5;
 }
 
 #Tomorrow{
-  width: 15vw;
+  width: 31vw;
+  max-height: 20vh;
   margin: 0% 2% 2% 2%;
   padding: 15px 20px;
   background-color: #9FE095;
@@ -374,14 +387,14 @@ p{
 }
 
 #Tomorrow .Amount{
-  font-size: xxx-large;
+  font-size: 3vw;
   margin: 0;
   color: #04AD15;
 }
 
 #To-Notes{
-  width: 39%;
-  height: 160px;
+  width: 93%;
+  height: 100px;
   margin: 0% 2% 2% 2%;
   text-align: center;
   background-color: #f7fbff;
@@ -409,22 +422,31 @@ p{
   flex-wrap: wrap;
 }
 
+#Transaction-History h2{
+  color: #0C6515;
+}
+
 #Transaction-History table{
-  width: 70vw; 
-  margin: 0% 2% 2% 2%;
-  padding: 5px 20px 20px;
+  width: 75vw; 
+  margin: 2% 2% 2% 2%;
+  padding: 10px 20px 10px;
   background-color: #9FE095;
   border-radius: 15px;
   border: 2px solid #9FE095;
 }
 
+
 #Transaction-History p{
   display: inline-block;
+  color: #004b07;
 }
 
 #Transaction-History .intable{
   display: flex;
   justify-content: center;
+  padding: 0px 10px;
+  background-color: #0c65155d;
+  border-radius: 5px;
 }
 
 #Transaction-History .Left{
@@ -610,3 +632,98 @@ p{
   color: rgb(228, 246, 235);
   background-color: #04AD15;
 }
+
+
+/* PROGRESS CHECK */
+#progressMain{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(229, 247, 244)
+}
+
+.together{
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: #a1f794;
+  padding: 5%;
+  border-radius: 10px;
+}
+
+.setContainer{
+  padding: 10px;
+  margin-right: 5px;
+  width: 35%;
+}
+
+.spentContainer{
+  padding: 10px;
+  margin-right: 5px;
+  width: 35%;
+}
+
+.monthContainer{
+  padding: 10px;
+  margin-right: 10px;    
+  width: 15%;
+}
+
+.setTable, .spentTable {
+  width: 100%;
+}
+
+.together table thead{
+  text-align: center;
+  color: #004b07;
+  font-size: large;
+}
+
+
+.together table td{
+  border: 1px solid #004b07;
+  padding: 0px 10px;
+  border-radius: 5px;
+}
+
+.buttonDiv{
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  margin: 5px;
+}
+
+.buttonDiv button{
+  border: none;
+  height: 30px;
+  width: 150px;
+  margin: 10px 0px 0px 0px;
+  border-radius: 5px;
+  color: #a1f794;
+  background-color: #419135;
+}
+
+#progressMain p{
+  display: inline-block;
+  color: #0C6515;
+}
+
+#progressMain .Left{
+  width: 70%;
+  text-align: left;
+}
+
+#progressMain .Right{
+  width: 30%;
+  text-align: right;
+}
+
+.Month{
+  text-decoration: none;
+}
+

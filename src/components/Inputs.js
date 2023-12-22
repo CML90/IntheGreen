@@ -2,17 +2,21 @@ import '../App.css';
 import React, {useState, useEffect} from "react";
 import Axios from 'axios';
 import money from '../validations/inputs';
-
+import { useHistory } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Inputs = () => {
-
+    const history = useHistory();
+    
     const [user, setUser] = useState('');
     Axios.defaults.withCredentials = true;
     useEffect(() => {
       Axios.get("http://localhost:3001/api/authorized").then((response) => {
         console.log(response);
        if(response.data.message){
-        alert('You are not authenticated');
+        toast.error('You are not authenticated', {position: 'top-center'});
        }else{
         setUser(response.data.userInfo);
        }
@@ -30,6 +34,7 @@ const Inputs = () => {
       return () => clearInterval(intervalId);
     }, []);
 
+    const today = currentDate.getDate();
     const currentMonth = currentDate.getMonth() + 1;
     const currentYear = currentDate.getFullYear();
     const totalDaysInMonth = new Date(currentYear, currentMonth, 0).getDate();
@@ -47,6 +52,7 @@ const Inputs = () => {
       console.log(isValid);
 
       if(isValid){
+        //INSERT FOR MONTHLYSET
         Axios.post('http://localhost:3001/api/SetnewUser', 
         {
           userId: user.userId,
@@ -60,19 +66,27 @@ const Inputs = () => {
           //   alert('Error in insertion');
           // }
 
-          //INSERT FOR DAILYSET (INITIAL)
-          Axios.post('http://localhost:3001/api/SetnewUserDay',{
-            userId : user.userId,
-            avail: (formData.income - formData.sum)/totalDaysInMonth,
-            budget: formData.income - formData.sum
+          //INSERT FOR MONTHLYSPENT
+          Axios.post('http://localhost:3001/api/SetnewUserExpense', {
+            userId: user.userId 
           }).then((Secondresponse) => {
               console.log(Secondresponse);
           });
 
+          //INSERT FOR DAILYSET (INITIAL)
+          Axios.post('http://localhost:3001/api/SetnewUserDay',{
+            userId : user.userId,
+            avail: (formData.income - formData.sum)/totalDaysInMonth,
+            budget: (formData.income - formData.sum)/(totalDaysInMonth - today)
+          }).then((Thirdresponse) => {
+              console.log(Thirdresponse);
+          });
+
+          history.push('/home');
 
         });
       }else{
-        alert('Income must be greater than bills + savings');
+        toast.warn('Income must be greater than bills + savings. All values must be positive', {position: 'top-center'});
       }
 
     }
@@ -80,6 +94,7 @@ const Inputs = () => {
     return (
       
         <form className="Input" onSubmit={handleSubmit}>
+          <ToastContainer/>
         
           <div className='labels'>
             <h1>Welcome, {user.username} !</h1>

@@ -3,7 +3,10 @@ import React, {useState, useEffect} from "react";
 import { useHistory } from 'react-router-dom';
 import NewuserSchema from '../validations/signup';
 import Axios from 'axios';
-
+import { ToastContainer } from 'react-toastify';
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import {Link} from 'react-router-dom';
 
 function SignIn() {
     const history = useHistory();  // Initialize useHistory hook
@@ -34,6 +37,7 @@ function SignIn() {
           }).then((response) => {
           if(response.data.message){
             setDuplicate(response.data.message);
+            toast.error('Username already exists.', {position: 'top-center'});
           }else{
             //console.log(response.data.insertId);
             history.push('/calculate');
@@ -41,7 +45,8 @@ function SignIn() {
           }
         });
       }else{
-        alert('Invalid Input');
+        toast.info('For security, your Password must be 8 characters containing lowercase and uppercase letters, as well as numbers',
+        {position: 'top-center', autoClose: 8000});
       }
          
     };
@@ -58,8 +63,9 @@ function SignIn() {
 
   return (
     <div id="SignIn-main">
+      <ToastContainer />
       <form className="SI-Form" onSubmit={handleSubmit}>
-        <h1 id="logo">BT</h1>
+        <h1 id="logo">GB</h1>
         <label>Username:</label><input 
             type="text" 
             name="username" 
@@ -77,7 +83,8 @@ function SignIn() {
             />
         <button type="submit">Sign Up</button>
       </form>
-      <h3>{duplicate}</h3>
+      <Link to="/">Back</Link>
+      {/* <h3>{duplicate}</h3> */}
     </div>
   );
 }

@@ -24,8 +24,8 @@ function Directions(){
                 <p>The resulting Monthly Budget is divided by the amount of days in the month. How much you spend on a day affects 
                     your daily budgets for succeeding days. 
                 </p>
-                <p>You may add your own categories for tracking your daily expenses. Please make sure input your spendings for an accurate calculation
-                    and saving pattern. 
+                <p>In the next page, you will be able to add expenses or subtract them when you have gained variable income. 
+                    Your expenses will go into three categories: Living, Entertainment, and Other. I wish you the best in your saving journey!  
                 </p>
                 
             </div>
