@@ -12,7 +12,8 @@
 to get the backend running.
 
 After that, everything can tested out on the UI.
-Potential issues:
+
+#### Potential issues:
 * Session expires early.
 In this scenarion please go back to the original / route for login and login again.
 * User is logged in but the values are not showing
