@@ -48,6 +48,9 @@ Users can see how much they spent yesterday and how much they will be able to sp
 The today spent value starts at 0 and available starts at the daybudget value. As spent increases available and newbudget(tomorrow) decreases.
 Users can also undo transactions.
 
+new budget is calculated by subtracting the months budget by total spent for the month, thwen dividing it by the total number of days in the month minus today
+newbudget = (monthbudget - totalspent)/(totalDaysintheMonth - today);
+
 If, there is not monthlyspent row for the month (its a new month) -> 
 ##### /monthly
     Set income,bills,savings. Automatically add into monthlyset and dailystats.

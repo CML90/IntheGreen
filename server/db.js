@@ -500,15 +500,14 @@ app.post('/api/getmonthlyset', (req,res) => {
  *               items:
  *                 type: object
  *                 properties:
- *                   // Define the properties of the monthly set data here
- *                   // For example:
+ *                   # For example:
  *                   id:
  *                     type: integer
  *                     description: Monthly set ID
  *                   name:
  *                     type: string
  *                     description: Name of the monthly set
- *                   // Add more properties as needed
+ *                   # Add more properties as needed
  *               example:
  *                 - id: 1
  *                   name: "Monthly Set 1"
@@ -705,8 +704,8 @@ app.post('/api/getMonthlySpent', (req,res) => {
  *               items:
  *                 type: object
  *                 properties:
- *                   // Define the properties of the monthly spent data here
- *                   // For example:
+ *                   # Define the properties of the monthly spent data here
+ *                   # For example:
  *                   id:
  *                     type: integer
  *                     description: Monthly spent ID
@@ -716,7 +715,7 @@ app.post('/api/getMonthlySpent', (req,res) => {
  *                   category:
  *                     type: string
  *                     description: Category of the spent amount
- *                   // Add more properties as needed
+ *                   # Add more properties as needed
  *               example:
  *                 - id: 1
  *                   amount: 100.00

@@ -153,7 +153,7 @@ function Dashboard() {
             console.log("daily");
             console.log(response);
             if(response.data.message){
-                addNew(user.userId, budgetData.dayBudget, (budgetData.monthBudget - spent)/(totalDaysInMonth-today).toFixed(1));
+                addNew(user.userId, (budgetData.monthBudget - spent)/(totalDaysInMonth-today).toFixed(1), (budgetData.monthBudget - spent)/(totalDaysInMonth-today).toFixed(1));
                   //insert newdailystats
                   // Axios.post("http://localhost:3001/api/adddailyset", {
                   //   user: user.userId,
