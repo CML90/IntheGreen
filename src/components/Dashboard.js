@@ -468,6 +468,11 @@ function Dashboard() {
 
     };
 
+    const progress = () => {
+      history.push("/progress");
+      window.location.reload();
+    }
+
     // Function to format numbers with commas or spaces for thousands separators
     const formatNumber = (number) => {
       return number.toLocaleString(); 
@@ -587,14 +592,11 @@ function Dashboard() {
           
         </div>
 
-        <div id="To-Notes">
-          <Link to="/progress">
+        <div id="To-Notes" onClick={progress}>
             <div>
               <h3 className='Month'>{monthYear}</h3>
               <h3>Progress</h3>
             </div>
-          </Link>
-          
         </div>
 
       </div>
