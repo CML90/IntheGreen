@@ -470,7 +470,63 @@ app.post('/api/getmonthlyset', (req,res) => {
     });
 });
 
-
+/**
+ * @swagger
+ * /api/AllSet:
+ *   post:
+ *     summary: Retrieve monthly set data for a user
+ *     description: |
+ *       This endpoint retrieves monthly set data for a specified user.
+ *     requestBody:
+ *       description: User ID in the request body
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               user:
+ *                 type: string
+ *                 description: The user ID for which to retrieve monthly set data.
+ *             example:
+ *               user: "123456"
+ *     responses:
+ *       200:
+ *         description: Successful response with monthly set data
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   // Define the properties of the monthly set data here
+ *                   // For example:
+ *                   id:
+ *                     type: integer
+ *                     description: Monthly set ID
+ *                   name:
+ *                     type: string
+ *                     description: Name of the monthly set
+ *                   // Add more properties as needed
+ *               example:
+ *                 - id: 1
+ *                   name: "Monthly Set 1"
+ *                 - id: 2
+ *                   name: "Monthly Set 2"
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   description: Error message describing the issue
+ *               example:
+ *                 error: "Internal Server Error. Please try again later."
+ */
 app.post('/api/AllSet', (req,res) => {
     console.log("All set is running");
     console.log(req.body);
@@ -619,7 +675,68 @@ app.post('/api/getMonthlySpent', (req,res) => {
 
 });
 
-
+/**
+ * @swagger
+ * /api/SpentAll:
+ *   post:
+ *     summary: Retrieve monthly spent data for a user
+ *     description: |
+ *       This endpoint retrieves monthly spent data for a specified user.
+ *     requestBody:
+ *       description: User ID in the request body
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               user:
+ *                 type: string
+ *                 description: The user ID for which to retrieve monthly spent data.
+ *             example:
+ *               user: "123456"
+ *     responses:
+ *       200:
+ *         description: Successful response with monthly spent data
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   // Define the properties of the monthly spent data here
+ *                   // For example:
+ *                   id:
+ *                     type: integer
+ *                     description: Monthly spent ID
+ *                   amount:
+ *                     type: number
+ *                     description: Amount spent for the month
+ *                   category:
+ *                     type: string
+ *                     description: Category of the spent amount
+ *                   // Add more properties as needed
+ *               example:
+ *                 - id: 1
+ *                   amount: 100.00
+ *                   category: "Groceries"
+ *                 - id: 2
+ *                   amount: 50.00
+ *                   category: "Entertainment"
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   description: Error message describing the issue
+ *               example:
+ *                 error: "Internal Server Error. Please try again later."
+ */
 //get all moneyspent for progress
 app.post('/api/SpentAll', (req,res) => {
     console.log("Spent all is running");
