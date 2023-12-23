@@ -75,7 +75,7 @@ const UserInputs = () => {
           Axios.post('http://localhost:3001/api/SetnewUserDay',{
             userId : user.userId,
             avail: (formData.income - formData.sum)/totalDaysInMonth,
-            budget: formData.income - formData.sum
+            budget: (formData.income - formData.sum)/totalDaysInMonth     
           }).then((Secondresponse) => {
               console.log(Secondresponse);
           });
